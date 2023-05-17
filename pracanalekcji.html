@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Zadanie Na Lekcji</title>
+    <style>
+      .napisy {
+        padding: 3vh 3vw;
+        text-align: center;
+      }
+      .caly {
+        padding: 5vh 5vw;
+        margin: 20vh 20vw;
+        text-align: center;
+        border-radius: 50px;
+        text-shadow: 2px 2px lightgrey;
+        animation-name: kolor;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      @keyframes kolor {
+        from {
+          background-color: rgb(255, 225, 215);
+        }
+        to {
+          background-color: rgb(220, 245, 235);
+        }
+      }
+      .form {
+        border-radius: 7px ;
+        background-color: lightgoldenrodyellow;
+        font-size: large;
+      }
+      .przycisk {
+        padding: 7px;
+        border-radius: 10px;
+        font-size: large;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="caly">
+      <div class="napisy">
+        <h1 id="napis"></h1>
+      </div>
+
+      <script type="text/JavaScript">
+        function sprawdzenie()
+        {
+            let punkty = document.forms["formularz"]["punkty"].value
+            let imie = document.forms["formularz"]["imie"].value
+            if (punkty < 50)
+            {
+                document.getElementById("napis").style.color = "red"
+                document.getElementById("napis").innerHTML = imie + " niestety nie zdałeś/aś"
+            }
+            else if(punkty >=50 && punkty <=75)
+            {
+                document.getElementById("napis").style.color = "blue"
+                document.getElementById("napis").innerHTML = imie + " mogłoby być lepiej!"
+            }
+            else if(punkty > 75 && punkty <= 100)
+            {
+                document.getElementById("napis").style.color = "green"
+                document.getElementById("napis").innerHTML = "Świetna robota " + imie + "!"
+            }
+        }
+      </script>
+      <form name="formularz">
+        <br />
+        <input
+          type="text"
+          name="imie"
+          placeholder="Podaj swoje imię"
+          required
+          class="form"
+        /><br /><br />
+        <input
+          type="number"
+          name="punkty"
+          placeholder="Podaj ilosc punktów na egzaminie"
+          required
+          min="0"
+          max="100"
+          class="form"
+        /><br /><br />
+        <input
+          type="button"
+          onclick="sprawdzenie()"
+          value="POTWIERDŹ"
+          class="przycisk"
+        />
+      </form>
+    </div>
+  </body>
+</html>
